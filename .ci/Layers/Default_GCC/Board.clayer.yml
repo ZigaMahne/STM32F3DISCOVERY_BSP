@@ -1,0 +1,57 @@
+layer:
+  type: Board
+  description: Default STM32F3DISCOVERY board setup (GCC)
+  for-board: STMicroelectronics::STM32F3DISCOVERY
+
+  generators:
+    options:
+      - generator: CubeMX
+        path: ./CubeMX
+        name: Board
+
+  connections:
+    - connect: STM32F3DISCOVERY Board
+      provides:
+        - CMSIS_USART
+        - CMSIS_USB_Device
+        - CMSIS_VIO
+        - STDIN
+        - STDOUT
+        - STDERR
+        - Heap: 8192
+
+  define:
+    - CMSIS_target_header: \"STM32F3DISCOVERY.h\"
+
+  packs:
+    - pack: Keil::STM32F3xx_DFP@^3.0.0-0
+    - pack: Keil::STM32F3DISCOVERY_BSP@^1.0.0-0
+    - pack: ARM::CMSIS-Driver_STM32@^1.0.0-0
+    - pack: ARM::CMSIS@^6.0.0
+    - pack: ARM::CMSIS-Compiler@^2.0.0
+
+  components:
+    - component: Device:CubeMX
+
+    - component: CMSIS:CORE
+
+    - component: CMSIS Driver:GPIO
+    - component: CMSIS Driver:USART
+    - component: CMSIS Driver:USB Device
+    - component: CMSIS Driver:VIO:Board
+
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDERR:Custom
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: CMSIS-Compiler:STDIN:Custom
+
+  groups:
+    - group: Board
+      files:
+        - file: ./README.md
+        - file: ./STM32F3DISCOVERY.h
+        - file: ./retarget_stdio.c
+
+  linker:
+    - script: ./CubeMX/STM32CubeMX/STM32CubeIDE/STM32F303VCTX_FLASH.ld
+      for-compiler: GCC
