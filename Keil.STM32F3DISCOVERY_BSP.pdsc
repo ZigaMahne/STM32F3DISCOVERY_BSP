@@ -81,7 +81,6 @@
       <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1035-f303c-c01_schematic.pdf" title="Schematics"/>
       <book category="other"     name="Documents/README.md" title="Guide"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F303VCTx"/>
-      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32F303"/>
       <feature type="ODbg"          n="1"              name="On-board ST-LINK/V2"/>
       <feature type="XTAL"          n="8000000"/>
       <feature type="PWR"           n="5"              name="USB Powered"/>
