@@ -76,14 +76,14 @@ jobs:
         working-directory: ./
         run: |
           mkdir -p ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/
-          cp -a ./MDK-Middleware/Examples/* ./CI/MW-RefApps/Examples/
+          cp -a ./MDK-Middleware/Examples/. ./CI/MW-RefApps/Examples/
 
       - name: Replace specific csolution files
         working-directory: ./
         run: |
           if [ -e ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ]
           then
-             cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+             cp -f ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
           fi
 
       - name: Add the board layer to the ${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
@@ -95,7 +95,7 @@ jobs:
         if: always()
         working-directory: ./
         run: |
-          cp -f ${{ matrix.solution.layer_ac6 }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
+          cp -rf ${{ matrix.solution.layer_ac6 }}/* ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/Board/   # Copy the Board layer
 
       - name: ${{ matrix.solution.name }} AC6 build test
         if: always()
