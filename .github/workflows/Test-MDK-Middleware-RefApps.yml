@@ -45,7 +45,7 @@ jobs:
       - name: Checkout STM32F3xx_DFP
         uses: actions/checkout@v4
         with:
-          repository: Open-CMSIS-Pack/STM32F3xx_DFP
+          repository: ZigaMahne/STM32F3xx_DFP
           path: ./DFP
 
       - name: Checkout MDK-Middleware
