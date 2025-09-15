@@ -24,6 +24,9 @@
       - Added DWARF-5 debug information
       - Added generated output files
       - Updated RTE_Components.h file
+      - Updated memory regions file
+      Layers:
+      - Updated memory regions file
     </release>
   </releases>
 
